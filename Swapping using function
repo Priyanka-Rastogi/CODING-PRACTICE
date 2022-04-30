@@ -1,0 +1,22 @@
+#include<stdio.h>
+void power(int,int);
+void main() 
+{
+    int a,b;
+    printf("Enter the base:\n");
+    scanf("%d",&a);
+    printf("Enter the exponent:\n");
+    scanf("%d",&b);
+    power(a,b);
+}
+ 
+void power(int a,int b)
+{
+    int power=1;
+    while(b>0)
+    {
+        power=power*a;
+        b--;
+    }
+    printf("The power of the no = %d",power);
+}
