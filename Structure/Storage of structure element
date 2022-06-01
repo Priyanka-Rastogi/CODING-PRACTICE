@@ -1,0 +1,17 @@
+//MEMORY MAP OF STRUCTURE ELEMENTS
+#include<stdio.h>
+int main()
+{
+   struct book
+   {
+      char name;
+      float price;
+      int pages;
+   };
+   struct book b1={'abcd',130.44,550};
+   printf("address of name=%u\n",&b1.name);
+   printf("address of price=%u\n",&b1.price);
+   printf("address of pages=%u\n",&b1.pages);
+   return 0;
+
+}
