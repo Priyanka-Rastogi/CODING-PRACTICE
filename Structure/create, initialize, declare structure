@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+/*structure declaration*/
+struct employee
+{
+	char name[30];
+	int empId;
+	float salary;
+};
+
+int main()
+{
+	/*declare and initialization of structure variable*/
+	struct employee emp={"Harry",32445,76909};
+	
+	printf("\n Name: %s"	,emp.name);
+	printf("\n Id: %d"		,emp.empId);
+	printf("\n Salary: %.2f\n",emp.salary);
+	return 0;
+}
+
