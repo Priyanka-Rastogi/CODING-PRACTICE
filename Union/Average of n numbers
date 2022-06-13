@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<string.h>
+union student
+{
+   int marks;
+   char name[10];
+};
+int main()
+{
+union student st[5];
+int s=0,i=0;
+char ch;
+float average;
+for(i=0;i<5;i++)
+{
+   printf("enter the marks:");
+   scanf("%d",&st[i].marks);
+   s=s+st[i].marks;
+   fgets(st[i].name,10,stdin);
+}
+average=s/5;
+printf("%f",average);
+return 0;
+}
+
