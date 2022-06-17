@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<string.h>
+struct employee
+{
+   char names[10];
+   int salary;
+   int work_hour;
+};
+void func(struct employee e[],int);
+void main()
+{
+   int n,i;
+   char ch;
+   printf("enter the total no. of employee:");
+   scanf("%d",&n);
+   struct employee e[n];
+   for(i=0;i<n;i++)
+{
+   ch=getchar();
+   printf("enter the name of employee:");
+   gets(e[i].names);
+   printf("enter the salary and work_hour:");
+   scanf("%d%d",&e[i].salary,&e[i].work_hour);
+   func(e,n);
+}
+}
+void func(struct employee e[],int n)
+{
+   int i;
+   for(int i=0;i<n;i++)
+   {
+      if(e[i].work_hour>8 && e[i].work_hour<=10)
+         e[i].salary=e[i].salary+5000;
+      
+   
+   for(int i=0;i<n;i++)
+   {
+      if(e[i].work_hour>10&&e[i].work_hour<=12)
+            e[i].salary=e[i].salary+10000;
+         
+   }
+   for(int i=0;i<n;i++)
+   {
+      if(e[i].work_hour>12)
+          e[i].salary=e[i].salary+15000;
+   }
+   puts(e[i].names);
+   printf("%d",e[i].salary);
+}
+}
+   
+
+
