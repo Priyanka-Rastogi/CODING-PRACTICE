@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<string.h>
+void main()
+{
+   FILE *p;
+   char str[50];
+   int c1=0,c2=0,i=0;
+   p=fopen("file.txt","w");
+   printf("enter the word\t");
+   gets(str);
+   int l=strlen(str);
+   while(i<l)
+   {
+      putc(str[i],p);
+      i++;
+   }
+   fclose(p);
+   p=fopen("file.txt","r");
+   i=0;
+   while(i<l)
+   {
+      if(str[i]=='a'||str[i]=='e'||str[i]=='i'||str[i]=='o'||str[i]=='u'|| str[i]=='A'||str[i]=='E'||str[i]=='I'||str[i]=='O'||str[i]=='U')
+      c1++;
+      else
+      c2++;
+      printf("%c",str[i]);
+      i++;
+   }
+   fclose(p);
+   printf("\n vowel=%d  \nconsonant=%d",c1,c2);
+}
