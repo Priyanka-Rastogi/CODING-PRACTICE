@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<string.h>
+void main()
+{
+    char fruits[5][12],temp[10];
+    int i,j;
+    for(i=0;i<5;i++)
+    {
+        printf("Enter fruit:");
+        gets(fruits[i]);
+    }
+    for(i=1;i<5;i++)
+    {
+        strcpy(temp,fruits[i]);
+        j=i-1;
+        while(j>=0 && strcmp(fruits[j],temp)>0)
+        {
+
+                strcpy(fruits[j+1],fruits[j]);
+                j--;
+
+        }
+        strcpy(fruits[j+1],temp);
+
+    }
+     printf("After Sorting\n");
+        for(i=0;i<5;i++)
+        {
+            puts(fruits[i]);
+        }
+}
