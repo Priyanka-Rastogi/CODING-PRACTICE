@@ -1,0 +1,106 @@
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
+{
+    int info;
+    struct node *next;
+}nodetype;
+void insert(nodetype **head,int num);
+void split(nodetype **head,nodetype **,nodetype **);
+void diplay(nodetype *head);
+void display_positive(nodetype *positive_head);
+void display_negative(nodetype *negative_head);
+
+int main()
+{
+    int num,choice;
+    nodetype *head=NULL,*negative_head=NULL,*positive_head=NULL;
+    char opt;
+    do
+    {
+        printf("1.to insert in linked list:\n2.to split linked list:\n3.display linked list\n4.display even index\n5.display odd index\n");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1: printf("Enter the number to insert:");
+            scanf("%d",&num);
+            insert(&head,num);
+            break;
+            case 2:split(&head,&positive_head,&negative_head);
+            break;
+            case 3:display(head);
+            break;
+            case 4:display_negative(negative_head);
+            break;
+            case 5:display_positive(positive_head);
+            break;
+        }printf("Do you want to continue:Y/N\n");
+        scanf(" %c",&opt);
+    }while(opt=='y'|| opt=='Y');
+    return 0;
+}
+void insert(nodetype **head,int num)
+{
+     nodetype *ptr,*loc;
+    ptr=(nodetype*)malloc(sizeof(nodetype));
+    ptr->info=num;
+    ptr->next=NULL;
+    if((*head)==NULL)
+        (*head)=ptr;
+    else
+    {
+        loc=(*head);
+        while(loc->next!=NULL)
+            loc=loc->next;
+        loc->next=ptr;
+    }
+}
+void split(nodetype **head,nodetype **odd_head,nodetype **even_head)
+{
+    nodetype *p=(*head);
+    if(!(*head))
+        return *head;
+        nodetype (*negative);
+        nodetype (*positive);
+    while(p!=NULL)
+    {
+        if(p->info<0)
+        {
+            negative=p;
+            p=p->next;
+            negative->next=NULL;
+            negative=negative->next;
+        }
+        else
+            positive=positive->next;
+    }
+}
+void display(nodetype *head)
+{
+    nodetype *p=head;
+    if(p==NULL)
+        printf("empty linked list");
+    while(p!=NULL)
+    {
+        printf("%d\n",p->info);
+        p=p->next;
+    }
+}
+void display_negative(nodetype *negative_head)
+{
+    nodetype *p=negative_head;
+    while(p!=NULL)
+    {
+        printf("%d\n",p->info);
+        p=p->next;
+    }
+}
+void display_positive(nodetype *positive_head)
+{
+    nodetype *p=positive_head;
+    while(p!=NULL)
+    {
+        printf("%d\n",p->info);
+        p=p->next;
+    }
+}
