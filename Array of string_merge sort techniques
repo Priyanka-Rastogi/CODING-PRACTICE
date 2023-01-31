@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<string.h>
+#define MAX 100
+void merge_sort(char* A,char *c,int lb,int ub);
+void merge(char *A,char *c,int lb,int mid,int ub);
+void main()
+{
+    int n,i;
+    char A[MAX][MAX],c[MAX];
+    printf("enter the number of elements:");
+    scanf("%d",&n);
+    gets(c);
+    for(i=0;i<n;i++)
+    {
+        printf("Enter string:");
+        gets(A[i]);
+    }
+    printf("sorted array:\n");
+    merge_sort(A,c,0,n-1);
+    for(i=0;i<n;i++)
+    {
+        puts(A[i]);
+    }
+}
+void merge_sort(char *A,char *c,int lb,int ub)
+{
+    int mid=0;
+    if(lb<ub)
+    {
+        mid=(ub+lb)/2;
+        merge_sort(A,c,lb,mid);
+        merge_sort(A,c,mid+1,ub);
+        merge(A,c,lb,mid+1,ub);
+    }
+}
+void merge(char *A,char* c,int lb,int mid,int ub)
+{
+    int le=mid-1,k=lb,i;
+    while(lb<=le && mid<=ub)
+    {
+        if(strcmpi(A[lb],A[mid])>0)
+        {
+            strcpy(c[k],A[lb]);
+            k++;
+            lb++;
+        }
+        else
+        {
+        strcpy(c[k],A[mid]);
+        k++;
+        mid++;
+        }
+    }
+    while(lb<=le)
+    {
+        c[k]=A[lb];
+        k++;
+        lb++;
+    }
+    while(mid<=ub)
+    {
+        c[k]=A[mid];
+        k++;
+        mid++;
+    }
+    for(i=lb;i<=ub;i++)
+    {
+        A[i]=c[i];
+    }
+}
