@@ -1,0 +1,37 @@
+//Here is the code for automatic fish feeder
+
+#include <Servo.h>
+Servo myservo;
+int pos = 0;
+long fishfeeding = 6000; 
+long endtime;
+long now;
+
+void setup()
+{
+  myservo.attach(7);
+  myservo.write(0);
+  delay(15);
+}
+
+void loop()
+{
+  now = millis();
+  endtime = now + fishfeeding;
+  while (now < endtime)
+  {
+    myservo.write(0);
+    delay(2000);
+    now = millis();
+  }
+  for (pos = 0; pos < 180; pos++)
+  {
+    myservo.write(pos);
+    delay(15);
+  }
+  for (pos = 180; pos >= 1; pos --)
+  {
+    myservo.write(pos);
+    delay(15);
+  }
+}
