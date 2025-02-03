@@ -1,6 +1,14 @@
 #include <stdio.h>
  
-int fact(int);
+int fact(int num)
+{
+    int i,f=1;
+    for(i=1;i<=num;i++)
+    {
+        f=f*i;
+    }
+    return f;
+}
  
 void main()
 {
@@ -12,12 +20,4 @@ void main()
     printf("Factorial of the num(%d) = %d\n",num,factorial);
 }
  
-int fact(int num)
-{
-    int i,f=1;
-    for(i=1;i<=num;i++)
-    {
-        f=f*i;
-    }
-    return f;
-}
+
